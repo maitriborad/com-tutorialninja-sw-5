@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,12 +21,14 @@ public class DesktopsPageTest extends BaseTest {
     DesktopPage desktopPage;
     ProductPage productPage;
     ShoppingCartPage cartPage;
+    SoftAssert softAssert;
     @BeforeMethod(alwaysRun = true)
     public void inIt(){
         homePage = new HomePage();
         desktopPage = new DesktopPage();
         productPage = new ProductPage();
         cartPage = new ShoppingCartPage();
+        softAssert=new SoftAssert();
     }
     @Test(groups = {"sanity","regression"})
     public void verifyProductArrangeInAlphabeticalOrder(){
@@ -63,5 +66,6 @@ public class DesktopsPageTest extends BaseTest {
         Assert.assertTrue(cartPage.getDeliveryDate().contains("2023-11-30"), "Delivery date not matched");
         softAssert(cartPage.getModel(), "Product 21", "Model not matched");
         softAssert(cartPage.getTotal(), "£74.73", "Total not matched");
+        softAssert.assertAll();
     }
 }

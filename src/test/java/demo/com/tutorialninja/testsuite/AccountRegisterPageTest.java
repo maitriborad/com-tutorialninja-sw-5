@@ -9,6 +9,7 @@ import demo.com.tutorialninja.testbase.BaseTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 @Listeners(CustomListeners.class)
 public class AccountRegisterPageTest extends BaseTest {
@@ -16,12 +17,14 @@ public class AccountRegisterPageTest extends BaseTest {
     AccountLoginPage accountLoginPage;
     MyAccountPage myAccountPage;
     AccountRegisterPage accountRegisterPage;
+    SoftAssert softAssert;
     @BeforeMethod(alwaysRun = true)
     public void inIt(){
         homePage = new HomePage();
         accountLoginPage = new AccountLoginPage();
         myAccountPage = new MyAccountPage();
         accountRegisterPage = new AccountRegisterPage();
+        softAssert=new SoftAssert();
     }
 
     @Test(groups = {"sanity","regression"})
@@ -30,6 +33,7 @@ public class AccountRegisterPageTest extends BaseTest {
         homePage.selectMyAccountOptions("Register");
         softAssert(accountRegisterPage.getRegisterAccountText(),
                 "Register Account", "Register page not displayed");
+        softAssert.assertAll();
     }
 
     @Test(groups = {"smoke","regression"})
@@ -53,5 +57,6 @@ public class AccountRegisterPageTest extends BaseTest {
         softAssert(myAccountPage.getAccountLogoutText(), "Account Logout", "Not logged out");
         Thread.sleep(1000);
         myAccountPage.clickOnContinueButton();
+        softAssert.assertAll();
     }
 }

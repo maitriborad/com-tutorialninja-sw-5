@@ -4,11 +4,11 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="26.208">
+           time="11.289">
   <properties />
   
   
-            <testcase name="verifyProductsPriceDisplayHighToLowSuccessfully" time="6.635" classname="demo.com.tutorialninja.testsuite.LaptopsAndNotebooksPageTest" />
-                <testcase name="verifyThatUserPlaceOrderSuccessfully" time="19.573" classname="demo.com.tutorialninja.testsuite.LaptopsAndNotebooksPageTest" />
+            <testcase name="verifyProductsPriceDisplayHighToLowSuccessfully" time="4.774" classname="demo.com.tutorialninja.testsuite.LaptopsAndNotebooksPageTest" />
+                <testcase name="verifyThatUserPlaceOrderSuccessfully" time="6.515" classname="demo.com.tutorialninja.testsuite.LaptopsAndNotebooksPageTest" />
       
 </testsuite>

@@ -9,6 +9,7 @@ import demo.com.tutorialninja.testbase.BaseTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 @Listeners(CustomListeners.class)
 public class TopMenuTest extends BaseTest {
@@ -16,12 +17,14 @@ public class TopMenuTest extends BaseTest {
     DesktopPage desktopPage;
     LaptopsAndNotebooksPage laptopsAndNotebooksPage;
     ComponentsPage componentsPage;
+    SoftAssert softAssert;
     @BeforeMethod(alwaysRun = true)
     public void inIt(){
         homePage = new HomePage();
         desktopPage = new DesktopPage();
         laptopsAndNotebooksPage = new LaptopsAndNotebooksPage();
         componentsPage = new ComponentsPage();
+        softAssert=new SoftAssert();
     }
 
     @Test(groups = {"sanity","regression"})
@@ -31,6 +34,7 @@ public class TopMenuTest extends BaseTest {
         String expectedText = "Desktops";
         String actualText = desktopPage.getDesktopsText();
         softAssert(actualText, expectedText, "Not navigate to Desktop page");
+        softAssert.assertAll();
     }
 
     @Test(groups = {"sanity","regression"})
@@ -39,6 +43,7 @@ public class TopMenuTest extends BaseTest {
         homePage.selectMenu("Show AllLaptops & Notebooks");
         softAssert(laptopsAndNotebooksPage.getLaptopsAndNotebooksText(),
                 "Laptops & Notebooks", "Not navigate to Laptops and Notebooks page");
+        softAssert.assertAll();
     }
 
     @Test(groups = {"sanity","regression"})
@@ -47,5 +52,6 @@ public class TopMenuTest extends BaseTest {
         homePage.selectMenu("Show AllComponents");
         softAssert(componentsPage.getComponentsText(),
                 "Components", "Not navigate to Laptops and Notebooks page");
+        softAssert.assertAll();
     }
 }

@@ -4,11 +4,11 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="8.129">
+           time="7.245">
   <properties />
   
   
-            <testcase name="verifyUserShouldNavigateToLoginPageSuccessfully" time="1.135" classname="demo.com.tutorialninja.testsuite.AccountRegisterPageTest" />
-                <testcase name="verifyThatUserShouldLoginAndLogoutSuccessfully" time="6.994" classname="demo.com.tutorialninja.testsuite.AccountRegisterPageTest" />
+            <testcase name="verifyThatUserShouldLoginAndLogoutSuccessfully" time="6.515" classname="demo.com.tutorialninja.testsuite.AccountRegisterPageTest" />
+                <testcase name="verifyUserShouldNavigateToLoginPageSuccessfully" time="0.730" classname="demo.com.tutorialninja.testsuite.AccountRegisterPageTest" />
       
 </testsuite>

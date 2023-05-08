@@ -8,17 +8,20 @@ import demo.com.tutorialninja.testbase.BaseTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 @Listeners(CustomListeners.class)
 public class AccountLoginPageTest extends BaseTest {
     HomePage homePage;
     AccountLoginPage accountLoginPage;
     MyAccountPage accountPage;
+    SoftAssert softAssert;
     @BeforeMethod(alwaysRun = true)
     public void inIt(){
         homePage = new HomePage();
         accountLoginPage = new AccountLoginPage();
         accountPage = new MyAccountPage();
+        softAssert = new SoftAssert();
     }
     @Test(groups = {"sanity","regression"})
     public void verifyUserShouldNavigateToLoginPageSuccessfully() {
@@ -26,6 +29,7 @@ public class AccountLoginPageTest extends BaseTest {
         homePage.selectMyAccountOptions("Login");
         softAssert(accountLoginPage.getReturningCustomerText(),
                 "Returning Customer", "Login page not displayed");
+        softAssert.assertAll();
     }
 
     @Test(groups = {"smoke","regression"})
@@ -39,5 +43,6 @@ public class AccountLoginPageTest extends BaseTest {
         homePage.clickOnMyAccountTab();
         homePage.selectMyAccountOptions("Logout");
         softAssert(accountPage.getAccountLogoutText(), "Account Logout", "Not logged out");
+        softAssert.assertAll();
     }
 }
